@@ -67,9 +67,14 @@ module.exports = (grunt) ->
         options:
           namespace: 'App.JST'
           processName: (filename) ->
-            parts = filename.split('/')
-            len = parts.length
-            return parts[len-1].match(/(.+)\.hbs$/)[1]
+            if (matches = filename.match /([A-Za-z0-9\._-]+)\/templates\/([A-Za-z0-9\._-]+)\.hbs$/)
+              className = matches[1][0].toUpperCase() + matches[1][1..-1].toLowerCase()
+              tplName = matches[2]
+              return "#{className}.#{tplName}"
+            else
+              parts = filename.split('/')
+              len = parts.length
+              return parts[len-1].match(/(.+)\.hbs$/)[1]
         files:
           './js/hbs.js': ['./js/**/*.hbs']
 

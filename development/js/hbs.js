@@ -1,7 +1,7 @@
 this["App"] = this["App"] || {};
 this["App"]["JST"] = this["App"]["JST"] || {};
 
-this["App"]["JST"]["application"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["App"]["JST"]["Application.application"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [2,'>= 1.0.0-rc.3'];
 helpers = helpers || Handlebars.helpers; data = data || {};
   var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;

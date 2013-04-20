@@ -142,7 +142,7 @@ App.View = Backbone.View.extend({
   // Render using the compiled JST template.
   render: function() {
     var ctx   = this.model.toJSON(),
-      html  = App.JST['application'](ctx);
+        html  = App.JST['application'](ctx);
 
     this.$el.html(html);
     return this;
