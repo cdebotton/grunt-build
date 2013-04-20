@@ -25,7 +25,7 @@ module.exports = (grunt) ->
         files: ['js/**/*.hbs']
         tasks: ['handlebars:compile', 'neuter', 'mocha:test', 'clean']
       spec:
-        files: ['spec/**/*Spec.coffee']
+        files: ['specs/**/*Spec.coffee']
         tasks: ['coffee:test', 'mocha:test', 'clean']
 
     compass:
@@ -48,13 +48,13 @@ module.exports = (grunt) ->
     coffee:
       test:
         files:
-          '_spec/specs.js': 'spec/**/*Spec.coffee'
+          '_spec/specs.js': 'specs/**/*Spec.coffee'
 
     clean: ['_spec']
 
     mocha:
       test:
-        src: ['./spec/SpecRunner.html']
+        src: ['./specs/SpecRunner.html']
         options:
           mocha:
             ignoreLeaks: false
