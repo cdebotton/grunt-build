@@ -1,7 +1,13 @@
-node_modules
-.sass-cache
+# System Files
 ._*
-vendor
+.DS_Store
+
+# Build results
 public/js/*
 public/css/*
+
+# Build tools
+node_modules
+.sass-cache
 npm-debug.log
+vendor
