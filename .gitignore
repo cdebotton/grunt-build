@@ -3,4 +3,5 @@ node_modules
 ._*
 vendor
 public/js/*
+public/css/*
 npm-debug.log
