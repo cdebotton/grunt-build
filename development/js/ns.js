@@ -1,1 +1,3 @@
-App = {};
+"use strict";
+
+window.App = {};

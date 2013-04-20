@@ -53,7 +53,7 @@ module.exports = (grunt) ->
 
     neuter:
       options:
-        includeSourceURL: false
+        includeSourceURL: true
       './../public/js/application.js': './js/main.js'
 
     uglify:
