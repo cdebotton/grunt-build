@@ -8,8 +8,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-neuter'
   grunt.loadNpmTasks 'grunt-contrib-handlebars'
   grunt.loadNpmTasks 'grunt-contrib-jasmine'
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
 
-  grunt.registerTask 'default', ['handlebars:compile', 'neuter', 'compass:development', 'jasmine:test', 'watch']
+  grunt.registerTask 'default', ['handlebars:compile', 'neuter', 'compass:development', 'coffee:test', 'jasmine:test', 'clean', 'watch']
   grunt.registerTask 'build', ['handlebars:compile', 'neuter', 'uglify', 'compass:production']
 
   grunt.initConfig {
@@ -19,13 +20,13 @@ module.exports = (grunt) ->
         tasks: ['compass:development']
       js:
         files: ['js/**/*.js']
-        tasks: ['neuter', 'jasmine:test']
+        tasks: ['neuter', 'jasmine:test', 'clean']
       hbs:
         files: ['js/**/*.hbs']
-        tasks: ['handlebars:compile', 'neuter', 'jasmine:test']
+        tasks: ['handlebars:compile', 'neuter', 'jasmine:test', 'clean']
       spec:
-        files: ['spec/**/*.js']
-        tasks: ['jasmine:test']
+        files: ['spec/**/*.coffee']
+        tasks: ['coffee:test', 'jasmine:test', 'clean']
 
     compass:
       development:
@@ -44,12 +45,20 @@ module.exports = (grunt) ->
       options:
         jshintrc: '.jshintrc'
 
+    coffee:
+      test:
+        files:
+          '_spec/specs.js': 'spec/**/*Spec.coffee'
+          '_spec/helpers.js': 'spec/**/*Helper.coffee'
+
+    clean: ['_spec']
+
     jasmine:
       test:
         src: '../public/js/application.js'
         options:
-          specs: 'spec/*Spec.js'
-          helpers: 'spec/*Helper.js'
+          specs: '_spec/specs.js'
+          helpers: '_spec/helpers.js'
 
     handlebars:
       compile:
