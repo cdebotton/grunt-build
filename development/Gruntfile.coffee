@@ -25,7 +25,7 @@ module.exports = (grunt) ->
         files: ['js/**/*.hbs']
         tasks: ['handlebars:compile', 'neuter', 'mocha:test', 'clean']
       spec:
-        files: ['spec/**/*.coffee']
+        files: ['spec/**/*Spec.coffee']
         tasks: ['coffee:test', 'mocha:test', 'clean']
 
     compass:
@@ -49,7 +49,6 @@ module.exports = (grunt) ->
       test:
         files:
           '_spec/specs.js': 'spec/**/*Spec.coffee'
-          '_spec/helpers.js': 'spec/**/*Helper.coffee'
 
     clean: ['_spec']
 
