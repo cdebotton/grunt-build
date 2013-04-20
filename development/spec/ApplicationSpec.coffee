@@ -1,9 +1,9 @@
 describe 'There is an application', ->
   it 'has a router', ->
-    expect(App.Router).toBeTruthy()
+    App.Router.should.be.a 'function'
 
   it 'has a model', ->
-    expect(App.Model).toBeTruthy()
+    App.Model.should.be.a 'function'
 
   it 'has a view', ->
-    expect(App.View).toBeTruthy()
+    App.View.should.be.a 'function'

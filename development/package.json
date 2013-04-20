@@ -26,7 +26,7 @@
     "grunt-contrib-uglify": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-handlebars": "*",
-    "grunt-contrib-jasmine": "*",
+    "grunt-mocha": "*",
     "grunt-contrib-coffee": "*"
   }
 }

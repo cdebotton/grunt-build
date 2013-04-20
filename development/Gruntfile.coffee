@@ -7,10 +7,10 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.loadNpmTasks 'grunt-neuter'
   grunt.loadNpmTasks 'grunt-contrib-handlebars'
-  grunt.loadNpmTasks 'grunt-contrib-jasmine'
+  grunt.loadNpmTasks 'grunt-mocha'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
 
-  grunt.registerTask 'default', ['handlebars:compile', 'neuter', 'compass:development', 'coffee:test', 'jasmine:test', 'clean', 'watch']
+  grunt.registerTask 'default', ['handlebars:compile', 'neuter', 'compass:development', 'coffee:test', 'mocha:test', 'clean', 'watch']
   grunt.registerTask 'build', ['handlebars:compile', 'neuter', 'uglify', 'compass:production']
 
   grunt.initConfig {
@@ -20,13 +20,13 @@ module.exports = (grunt) ->
         tasks: ['compass:development']
       js:
         files: ['js/**/*.js']
-        tasks: ['neuter', 'jasmine:test', 'clean']
+        tasks: ['neuter', 'mocha:test', 'clean']
       hbs:
         files: ['js/**/*.hbs']
-        tasks: ['handlebars:compile', 'neuter', 'jasmine:test', 'clean']
+        tasks: ['handlebars:compile', 'neuter', 'mocha:test', 'clean']
       spec:
         files: ['spec/**/*.coffee']
-        tasks: ['coffee:test', 'jasmine:test', 'clean']
+        tasks: ['coffee:test', 'mocha:test', 'clean']
 
     compass:
       development:
@@ -53,12 +53,14 @@ module.exports = (grunt) ->
 
     clean: ['_spec']
 
-    jasmine:
+    mocha:
       test:
-        src: '../public/js/application.js'
+        src: ['./spec/SpecRunner.html']
         options:
-          specs: '_spec/specs.js'
-          helpers: '_spec/helpers.js'
+          mocha:
+            ignoreLeaks: false
+          reporter: 'Spec'
+          run: true
 
     handlebars:
       compile:
