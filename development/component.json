@@ -14,6 +14,7 @@
     "mocha": null,
     "chai": null,
     "sinon": null,
+    "sinon-chai": null,
     "jquery.transit": null,
     "jquery.cookie": null,
     "jquery-easing": null,
