@@ -1,8 +1,9 @@
-._*
-.DS_Store
 public/js/*
 public/css/*
 node_modules
 .sass-cache
 npm-debug.log
 vendor
+
+._*
+.DS_Store
