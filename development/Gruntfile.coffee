@@ -7,6 +7,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.loadNpmTasks 'grunt-neuter'
   grunt.loadNpmTasks 'grunt-contrib-handlebars'
+  grunt.loadNpmTasks 'grunt-contrib-jasmine'
 
   grunt.registerTask 'default', ['handlebars:compile', 'neuter', 'compass:development', 'watch']
   grunt.registerTask 'build', ['handlebars:compile', 'neuter', 'uglify', 'compass:production']

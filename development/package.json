@@ -25,6 +25,7 @@
     "grunt-contrib-clean": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-jshint": "*",
-    "grunt-contrib-handlebars": "*"
+    "grunt-contrib-handlebars": "*",
+    "grunt-contrib-jasmine": "*"
   }
 }
