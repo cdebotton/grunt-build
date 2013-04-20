@@ -1,0 +1,30 @@
+{
+  "name": "Grunt Build",
+  "description": "A grunt build setup for browser based application development.",
+  "version": "0.1",
+  "preferGlobal": "true",
+  "homepage": "https://github.com/cdebotton/grunt-build",
+  "author": {
+    "name": "Christian de Botton",
+    "url": "http://christiandebotton.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/cdebotton/grunt-build.git"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "dependencies": {
+    "grunt": "~0.4.0rc7",
+    "grunt-neuter": "*",
+    "grunt-bower": "*",
+    "grunt-contrib-compass": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-handlebars": "*"
+  }
+}
