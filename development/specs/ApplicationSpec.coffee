@@ -1,4 +1,4 @@
-describe 'There is an application', ->
+describe 'The application', ->
   it 'has a router', ->
     App.Router.should.be.a 'function'
 

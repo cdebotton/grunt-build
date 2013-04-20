@@ -59,6 +59,7 @@ module.exports = (grunt) ->
           mocha:
             ignoreLeaks: false
           reporter: 'Spec'
+          ui: 'bdd'
           run: true
 
     handlebars:
