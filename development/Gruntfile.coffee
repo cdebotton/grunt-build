@@ -77,7 +77,7 @@ module.exports = (grunt) ->
       './../public/js/application.js': './js/main.js'
 
     uglify:
-      busby:
+      build:
         options:
           mangle: true
           preserveComments: false
