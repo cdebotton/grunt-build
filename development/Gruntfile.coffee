@@ -19,10 +19,13 @@ module.exports = (grunt) ->
         tasks: ['compass:development']
       js:
         files: ['js/**/*.js']
-        tasks: ['neuter']
+        tasks: ['neuter', 'jasmine:test']
       hbs:
         files: ['js/**/*.hbs']
-        tasks: ['handlebars:compile', 'neuter']
+        tasks: ['handlebars:compile', 'neuter', 'jasmine:test']
+      spec:
+        files: ['spec/**/*.js']
+        tasks: ['jasmine:test']
 
     compass:
       development:
@@ -40,6 +43,13 @@ module.exports = (grunt) ->
       all: ['js/**/*.js']
       options:
         jshintrc: '.jshintrc'
+
+    jasmine:
+      test:
+        src: 'js/**/*.js'
+        options:
+          specs: 'spec/*Spec.js'
+          helpers: 'spec/*Helper.js'
 
     handlebars:
       compile:
