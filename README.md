@@ -27,8 +27,7 @@ First, clone this repository with `git clone -b master -o grunt-build git@github
 
 Ones that's done, cd into the directory and run the following commands:
 
-`npm install`
-`bower install`
+> `npm install` `bower install`
 
 And that's it, you can start using the build tools.
 
