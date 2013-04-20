@@ -9,7 +9,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-handlebars'
   grunt.loadNpmTasks 'grunt-contrib-jasmine'
 
-  grunt.registerTask 'default', ['handlebars:compile', 'neuter', 'compass:development', 'watch']
+  grunt.registerTask 'default', ['handlebars:compile', 'neuter', 'compass:development', 'jasmine:test', 'watch']
   grunt.registerTask 'build', ['handlebars:compile', 'neuter', 'uglify', 'compass:production']
 
   grunt.initConfig {
@@ -46,7 +46,7 @@ module.exports = (grunt) ->
 
     jasmine:
       test:
-        src: 'js/**/*.js'
+        src: '../public/js/application.js'
         options:
           specs: 'spec/*Spec.js'
           helpers: 'spec/*Helper.js'
