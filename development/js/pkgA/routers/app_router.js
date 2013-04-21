@@ -1,6 +1,6 @@
 "use strict";
 
-App.Router = Backbone.Router.extend({
+App.PkgA.Router = Backbone.Router.extend({
   routes: {
 
   },

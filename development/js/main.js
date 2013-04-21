@@ -1,3 +1,3 @@
 require('./js/ns');
 require('./js/libraries');
-require('./js/application/main');
+require('./js/pkgA/main');

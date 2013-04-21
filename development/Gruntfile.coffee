@@ -68,7 +68,7 @@ module.exports = (grunt) ->
           namespace: 'App.JST'
           processName: (filename) ->
             if (matches = filename.match /([A-Za-z0-9\._-]+)\/templates\/([A-Za-z0-9\._-]+)\.hbs$/)
-              className = matches[1][0].toUpperCase() + matches[1][1..-1].toLowerCase()
+              className = matches[1][0].toUpperCase() + matches[1][1..-1]
               tplName = matches[2]
               return "#{className}.#{tplName}"
             else
