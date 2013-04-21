@@ -8,3 +8,4 @@ vendor
 ._*
 .DS_Store
 hbs.js
+public/*
