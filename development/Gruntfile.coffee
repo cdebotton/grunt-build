@@ -1,10 +1,11 @@
-Config =
+Config = {
   APP_NAME: 'App'
   BUILD_DIR: '../public'
   CSS_DEST: 'styles.css'
   CONCAT_DEST: 'application.js'
   BUILD_DEST: 'build.js'
   TEST: true
+}
 
 module.exports = (grunt) ->
 
