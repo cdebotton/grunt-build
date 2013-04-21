@@ -1,3 +1,11 @@
+Config =
+  APP_NAME: 'App'
+  BUILD_DIR: '../public'
+  CSS_DEST: 'styles.css'
+  CONCAT_DEST: 'application.js'
+  BUILD_DEST: 'build.js'
+  TEST: true
+
 module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'grunt-contrib-uglify'
@@ -10,10 +18,10 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-mocha'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
 
-  grunt.registerTask 'default', ['handlebars:compile', 'neuter', 'compass:development', 'coffee:test', 'mocha:test', 'clean', 'watch']
-  grunt.registerTask 'build', ['handlebars:compile', 'neuter', 'uglify', 'compass:production']
+  defaultTasks = ['handlebars:compile', 'neuter', 'compass:development', 'coffee:test', 'mocha:test', 'clean', 'watch']
+  buildTasks = ['handlebars:compile', 'neuter', 'uglify', 'compass:production']
 
-  grunt.initConfig {
+  configObject = {
     watch:
       sass:
         files: ['sass/**/*.sass', 'sass/**/*.scss']
@@ -32,12 +40,12 @@ module.exports = (grunt) ->
       development:
         options:
           sassDir: './sass'
-          cssDir: '../public/css/'
+          cssDir: "#{Config.BUILD_DIR}/css"
           environment: 'development'
       production:
         options:
           sassDir: './sass'
-          cssDir: '../public/css/'
+          cssDir: "#{Config.BUILD_DIR}/css"
           environment: 'production'
 
     jshint:
@@ -65,7 +73,7 @@ module.exports = (grunt) ->
     handlebars:
       compile:
         options:
-          namespace: 'App.JST'
+          namespace: "#{Config.APP_NAME}.JST"
           processName: (filename) ->
             if (matches = filename.match /js\/([A-Za-z0-9\._-]+)\/templates\/([A-Za-z0-9\._-]+)\.hbs$/)
               className = matches[1][0].toUpperCase() + matches[1][1..-1]
@@ -81,7 +89,6 @@ module.exports = (grunt) ->
     neuter:
       options:
         includeSourceURL: false
-      './../public/js/application.js': './js/main.js'
 
     uglify:
       build:
@@ -89,6 +96,38 @@ module.exports = (grunt) ->
           mangle: true
           preserveComments: false
           report: 'gzip'
-        files:
-          './../public/js/build.js': ['./../public/js/application.js']
+        files: {}
   }
+
+  configObject.neuter["#{Config.BUILD_DIR}/js/#{Config.CONCAT_DEST}"] = './js/main.js'
+  configObject.uglify.build.files["#{Config.BUILD_DIR}/js/#{Config.BUILD_DEST}"] = "#{Config.BUILD_DIR}/js/#{Config.CONCAT_DEST}"
+
+  if not Config.TEST
+    delete configObject.mocha
+    delete configObject.watch.spec
+
+    if ((index = defaultTasks.indexOf('mocha:test')) > -1)
+      defaultTasks.splice index, 1
+
+    if ((index = defaultTasks.indexOf('coffee:test')) > -1)
+      defaultTasks.splice index, 1
+
+    if ((index = defaultTasks.indexOf('clean')) > -1)
+      defaultTasks.splice index, 1
+
+    if ((index = configObject.watch.hbs.tasks.indexOf('mocha:test')) > -1)
+      configObject.watch.hbs.tasks.splice index, 1
+
+    if ((index = configObject.watch.hbs.tasks.indexOf('clean')) > -1)
+      configObject.watch.hbs.tasks.splice index, 1
+
+    if ((index = configObject.watch.js.tasks.indexOf('mocha:test')) > -1)
+      configObject.watch.js.tasks.splice index, 1
+
+    if ((index = configObject.watch.js.tasks.indexOf('clean')) > -1)
+      configObject.watch.js.tasks.splice index, 1
+
+  grunt.registerTask 'default', defaultTasks
+  grunt.registerTask 'build', buildTasks
+
+  grunt.initConfig configObject
