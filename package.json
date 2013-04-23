@@ -1,32 +1,38 @@
 {
-  "name": "grunt-build-tool",
-  "description": "A grunt build setup for browser based application development.",
-  "version": "0.1.0",
-  "preferGlobal": "true",
-  "homepage": "https://github.com/cdebotton/grunt-build",
-  "author": {
-    "name": "Christian de Botton",
-    "url": "http://christiandebotton.com"
+  "name": "grunt-build",
+  "version": "1.0.0",
+  "description": "A front-end JavaScript build tool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/cdebotton/grunt-build.git"
+    "url": "git://github.com/cdebotton/grunt-build.git"
   },
-  "engines": {
-    "node": ">= 0.10.0"
-  },
-  "dependencies": {
-    "grunt": "~0.4.0rc7",
-    "grunt-neuter": "*",
-    "grunt-bower": "*",
-    "grunt-contrib-compass": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-contrib-connect": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-contrib-handlebars": "*",
-    "grunt-mocha": "*",
-    "grunt-contrib-coffee": "*"
+  "keywords": [
+    "build",
+    "handlebars",
+    "javascript"
+  ],
+  "author": "Christian de Botton",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "50aa4a84c93b57b306577ba12da4590491eb78cb",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-neuter": "~0.4.0",
+    "grunt-bower": "~0.5.1",
+    "grunt-contrib-compass": "~0.2.0",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-handlebars": "~0.5.8",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-mocha": "~0.3.1",
+    "grunt-contrib-livereload": "~0.1.2",
+    "grunt-regarde": "~0.1.1"
   }
 }
